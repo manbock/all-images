@@ -11,3 +11,11 @@ var har = {
     "versi...}
 ```
 #download.js 안의 내용을 콘솔에 붙여 넣으면 이미지 주소들을 뽑아낼 수 있다.
+```
+var imageUrls = [];
+har.log.entries.forEach(function (entry) {
+  if (entry.response.content.mimeType.indexOf("image/") !== 0) return;
+  imageUrls.push(entry.request.url);
+});
+console.log(imageUrls.join('\n'));
+```
